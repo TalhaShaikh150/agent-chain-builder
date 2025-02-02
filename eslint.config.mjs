@@ -8,7 +8,11 @@ const __dirname = dirname(__filename);
 const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
-
+module.exports = {
+  rules: {
+    "react/no-unescaped-entities": "off",
+  },
+};  
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 ];
