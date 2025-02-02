@@ -28,11 +28,11 @@ const Home = () => {
         options={{
           background: { color: darkMode ? "#000" : "#f8f9fa" },
           particles: {
-            number: { value: 150, density: { enable: true, area: 800 } },
+            number: { value: 180, density: { enable: true, area: 800 } },
             color: { value: darkMode ? "#ffffff" : "#3b82f6" }, // White stars in dark mode, blue in light mode
             shape: { type: "circle" }, 
             opacity: { value: 0.8, random: { enable: true, minimumValue: 0.5 } },
-            size: { value: 3, random: { enable: true, minimumValue: 1 } },
+            size: { value: 4, random: { enable: true, minimumValue: 1 } },
             move: { enable: true, speed: 1, direction: "none", random: false },
           },
           interactivity: {
@@ -66,7 +66,7 @@ const Home = () => {
       </motion.header>
 
       {/* Content */}
-      <div className="relative z-10 min-h-[80vh] flex flex-col items-center justify-center">
+      <div className="relative z-10 min-h-[70vh] flex flex-col items-center justify-center">
         {/* Main Content with fade-in animation */}
         <motion.main
           initial={{ opacity: 0, scale: 0.95 }}
@@ -78,7 +78,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-semibold mb-4 transition-colors duration-500"
+            className="text-4xl 2xl:text-5xl font-bold mb-4 transition-colors duration-500"
           >
             Welcome to AI Agent Builder
           </motion.h2>
@@ -87,7 +87,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="text-lg mb-8 transition-colors duration-500"
+            className="text-lg 2xl:text-xl mb-8 transition-colors duration-500"
           >
             Build and interact with AI-powered agent chains.
           </motion.p>
