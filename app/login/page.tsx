@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Eye, EyeOff } from "lucide-react"; // Icons for password visibility toggle
+import { Eye, EyeOff } from "lucide-react";
 
 const Login = () => {
   const router = useRouter();
@@ -19,13 +19,21 @@ const Login = () => {
 
   return (
     <div className={`min-h-screen flex items-center justify-center ${darkMode ? "bg-black text-white" : "bg-gray-100 text-gray-900"} transition-colors duration-500`}>
-      {/* Dark Mode Toggle */}
-      <button
-        onClick={() => setDarkMode(!darkMode)}
-        className="absolute top-4 right-4 p-2 bg-gray-800 text-white rounded-md shadow-md hover:bg-gray-700 transition"
-      >
-        {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-      </button>
+      
+      {/* Dark Mode Toggle Switch */}
+      <div className="absolute top-4 right-4 flex items-center">
+        <span className="mr-2 text-sm">{darkMode ? "Dark Mode" : "Light Mode"}</span>
+        <label className="relative inline-flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            className="sr-only peer"
+            checked={darkMode}
+            onChange={() => setDarkMode(!darkMode)}
+          />
+          <div className="w-11 h-6 bg-gray-400 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500"></div>
+        </label>
+
+      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

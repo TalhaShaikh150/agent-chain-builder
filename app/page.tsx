@@ -3,14 +3,13 @@ import { useRouter } from "next/navigation";
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
-import { loadSlim } from "tsparticles-slim"; // Lightweight particles engine
+import { loadSlim } from "tsparticles-slim";
 import { Engine } from "tsparticles-engine";
 
 const Home = () => {
   const router = useRouter();
   const [darkMode, setDarkMode] = useState(false);
 
-  // Initialize Particles
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
@@ -28,15 +27,15 @@ const Home = () => {
         options={{
           background: { color: darkMode ? "#000" : "#f8f9fa" },
           particles: {
-            number: { value: 180, density: { enable: true, area: 800 } },
-            color: { value: darkMode ? "#ffffff" : "#3b82f6" }, // White stars in dark mode, blue in light mode
-            shape: { type: "circle" }, 
+            number: { value: 200, density: { enable: true, area: 800 } },
+            color: { value: darkMode ? "#ffffff" : "#3b82f6" },
+            shape: { type: "circle" },
             opacity: { value: 0.8, random: { enable: true, minimumValue: 0.5 } },
             size: { value: 4, random: { enable: true, minimumValue: 1 } },
             move: { enable: true, speed: 1, direction: "none", random: false },
           },
           interactivity: {
-            events: { onHover: { enable: true, mode: "repulse" } }, // Stars move away on hover
+            events: { onHover: { enable: true, mode: "repulse" } },
             modes: { repulse: { distance: 100 } },
           },
           detectRetina: true,
@@ -50,24 +49,37 @@ const Home = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`relative z-10 ${
-          darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
-        } shadow-sm transition-colors duration-500`}
+          darkMode ? "bg-gray-900" : "bg-white"
+        } shadow-sm transition-colors duration-500 py-4 px-6 flex items-center justify-between`}
       >
-        <div className="max-w-7xl 2xl:max-w-[100rem] mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold">Agent Chain Builder</h1>
-          {/* Dark Mode Toggle */}
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="p-2 bg-gray-800 text-white rounded-md shadow-md hover:bg-gray-700 transition"
-          >
-            {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-          </button>
+        {/* Branding */}
+        <h1 className="text-xl font-bold tracking-wide">AI Agent Builder</h1>
+
+        {/* Navigation */}
+        <nav className="hidden md:flex space-x-6 text-sm font-medium">
+          <button onClick={() => router.push("/")} className="hover:text-blue-500 transition">Home</button>
+          <button onClick={() => router.push("/features")} className="hover:text-blue-500 transition">Features</button>
+          <button onClick={() => router.push("/docs")} className="hover:text-blue-500 transition">Docs</button>
+          <button onClick={() => router.push("/contact")} className="hover:text-blue-500 transition">Contact</button>
+        </nav>
+
+        {/* Dark Mode Toggle Switch */}
+        <div className="flex items-center space-x-3">
+          <span className="text-sm">{darkMode ? "Dark Mode" : "Light Mode"}</span>
+          <label className="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              className="sr-only peer"
+              checked={darkMode}
+              onChange={() => setDarkMode(!darkMode)}
+            />
+            <div className="w-11 h-6 bg-gray-300 peer-focus:ring-2 peer-focus:ring-blue-300 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-5 peer-checked:after:bg-white peer-checked:bg-blue-500 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-gray-800 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+          </label>
         </div>
       </motion.header>
 
       {/* Content */}
       <div className="relative z-10 min-h-[70vh] flex flex-col items-center justify-center">
-        {/* Main Content with fade-in animation */}
         <motion.main
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -78,7 +90,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl 2xl:text-5xl font-bold mb-4 transition-colors duration-500"
+            className="mx-4 md:mx-0 text-3xl md:text-4xl text-center 2xl:text-5xl font-extrabold sm:font-bold mb-4"
           >
             Welcome to AI Agent Builder
           </motion.h2>
@@ -87,12 +99,12 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="text-lg 2xl:text-xl mb-8 transition-colors duration-500"
+            className="text-base md:text-lg 2xl:text-xl mb-8 text-center mx-4 md:mx-0"
           >
             Build and interact with AI-powered agent chains.
           </motion.p>
 
-          {/* Login & Sign Up Buttons with hover effects */}
+          {/* Login & Sign Up Buttons */}
           <div className="flex gap-6">
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -116,4 +128,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Home; 
