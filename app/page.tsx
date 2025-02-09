@@ -27,7 +27,7 @@ const Home = () => {
         options={{
           background: { color: darkMode ? "#000" : "#f8f9fa" },
           particles: {
-            number: { value: 200, density: { enable: true, area: 800 } },
+            number: { value: 300, density: { enable: true, area: 800 } },
             color: { value: darkMode ? "#ffffff" : "#3b82f6" },
             shape: { type: "circle" },
             opacity: { value: 0.8, random: { enable: true, minimumValue: 0.5 } },
