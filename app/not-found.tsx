@@ -1,4 +1,4 @@
-  "use client";
+"use client";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { motion } from "framer-motion";
@@ -74,7 +74,7 @@ const NotFoundPage = () => {
           onClick={() => router.push("/")}
           className="mt-6 px-6 py-3 bg-blue-500 text-white text-lg rounded-lg shadow-md hover:bg-blue-600 transition-all"
         >
-          Go Home
+          Back To Home
         </motion.button>
 
         {/* Dark Mode Toggle */}
